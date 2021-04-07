@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Test Window Open</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+    </head>
+
+    <body>
+        <button onclick="openWindow()">Open Window</button>
+
+        <script>
+            function openWindow() {
+                let win = window.open('', '_blank');
+                console.info('Open window');
+                let id = setInterval(() => {
+                    let closed = win.closed;
+                    console.info('New window is', closed ? '' : 'not', 'closed');
+                    if (closed) {
+                        alert('New window is closed!');
+                        clearInterval(id);
+                    }
+                }, 500);
+            }
+        </script>
+    </body>
+</html>
